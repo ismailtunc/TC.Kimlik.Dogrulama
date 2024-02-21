@@ -6,7 +6,9 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.ForegroundColor = ConsoleColor.Cyan; 
+        // Change text color.
+        
         Console.WriteLine("""
     *****************************************************************
     *****************************************************************
@@ -32,22 +34,23 @@ Tuşlayınız:
 
 
             char userChoice = Console.ReadKey().KeyChar;
+            // Get user's choice
 
             if (userChoice == '1')
             {
                 Console.WriteLine("");
                 Console.Write("TC Kimlik Numarasını Giriniz: ");
                 string userTCtoConfirm = Console.ReadLine();
-                if (userTCtoConfirm.Length != 11)
+                if (userTCtoConfirm.Length != 11) // Check length.
                 {
                     Console.WriteLine("TCKN on bir (11) haneli olmalıdır");
                     islem();
                 }
-                else if (userTCtoConfirm[0] == 0)
+                else if (userTCtoConfirm[0] == 0) // Check if it starts with 0.
                 {
                     Console.WriteLine("TCKN sıfır (0) ile başlayamaz!");
                 }
-                else if (userTCtoConfirm.All(char.IsDigit) == false)
+                else if (userTCtoConfirm.All(char.IsDigit) == false) // Check type.
                 {
                     Console.WriteLine("TCKN yalnızca rakamlardan oluşmalıdır!");
                 }
@@ -63,17 +66,20 @@ Tuşlayınız:
                     {
                         ilk9Toplam1 += Convert.ToInt32(userTCtoConfirm[i].ToString());
                     }
+                    // Sum 1,3,5,7,9th digits of number.
 
                     for (int i = 1; i < 9; i += 2)
                     {
                         ilk9Toplam2 += Convert.ToInt32(userTCtoConfirm[i].ToString());
                     }
+                    // Sum 2,4,6,8th digits of number.
 
 
                     for (int i = 0; i < 10; i++)
                     {
                         ilk10Toplam += Convert.ToInt32(userTCtoConfirm[i].ToString());
                     }
+                    // Sum first 10 digits.
 
                     karakter10 = (ilk9Toplam1 * 7 - ilk9Toplam2) % 10;
                     karakter11 = ilk10Toplam % 10;
@@ -82,7 +88,7 @@ Tuşlayınız:
                     {
                         Console.WriteLine("*** Girdiğiniz T.C. Kimlik Numarası başarıyla doğrulanmıştır.***\n");
                         islem();
-
+                    //Check if 10th and 11th digits match to given number.
                     }
                     else
                     {
